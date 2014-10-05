@@ -4,6 +4,9 @@ var context;
 var screenWidth;
 var screenHeight;
 
+gameInitialize();
+gameDraw();
+
 function gameInitialize(){
     var canvas= document.getElementById("gameScreen");
     context = canvas.getContext("2d");
@@ -21,5 +24,5 @@ function gameLoop(){
 
 function gamedraw(){
     context.fillStyle = "rgb(222, 250, 250)";
-    context.fillRect (0,0, screenWidth, screenHeight);
+    context.fillRect (0, 0, screenWidth, screenHeight);
 }
