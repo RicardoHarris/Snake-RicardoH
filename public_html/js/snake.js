@@ -1,17 +1,34 @@
+/*=============================================================================
+ * Variables
+ * ============================================================================
+ */
+
 var snake;
 var snakeLenth;
 var snakeSize;
+
+var food;
 
 var context;
 var screenWidth;
 var screenHeight;
 
+/* ============================================================================
+ * Executing Game Code
+ * ============================================================================
+ */
+
 gameInitialize();
 snakeInitialize();
+foodInitialize();
 setInterval(gameLoop, 1000/30);
 
+/* ============================================================================
+ * Game Functions
+ * ============================================================================
+ */
 
-function gameInitialize(){
+function gameInitialize() {
     var canvas = document.getElementById("game-screen");
     context = canvas.getContext("2d");
     
@@ -22,23 +39,29 @@ function gameInitialize(){
     canvas.height = screenHeight;
 }
 
-function gameLoop(){
-    snakeDraw();
+function gameLoop() {
+    gameDraw();
     snakeUpdate();
     snakeDraw();
+    foodDraw();
 }
 
-function gameDraw(){
+function gameDraw() {
     context.fillStyle = "rgb(255, 255, 255)";
     context.fillRect(0, 0, screenWidth, screenHeight);
 }
 
-function snakeInitialize(){
+/* ============================================================================
+ * Snake Functions
+ * ============================================================================
+ */
+
+function snakeInitialize() {
     snake = [];
     snakeLength = 5;
     snakeSize = 35;
     
-    for(var index = snakeLength; index >= 0; index--){
+    for(var index = snakeLength; index >= 0; index--) {
         snake.push( {
             x: index,
             y: 0
@@ -47,14 +70,14 @@ function snakeInitialize(){
     }
 }
 
-function snakeDraw(){
+function snakeDraw() {
     for(var index = 0; index < snake.length; index++){
         context.fillStyle = "pink";
         context.fillRect(snake[index].x * snakeSize, snake[index].y * snakeSize, snakeSize, snakeSize);
     }
 }
 
-function snakeUpdate(){
+function snakeUpdate() {
     var snakeHeadX = snake[0].x;
     var snakeHeadY = snake[0].y;
     
@@ -64,4 +87,21 @@ function snakeUpdate(){
     snakeTail.x = snakeHeadX;
     snakeTail.y = snakeHeadY;
     snake.unshift(snakeTail);
+}
+
+/* ============================================================================
+ * Food Functions
+ * ============================================================================
+ */
+
+function foodInitialize() {
+    food = {
+        x: 0,
+        y: 0
+    };
+}
+
+function foodDraw() {
+    context.fillStyle = "pink";
+    context.fillRect = (food.x, food.y, snakeSize, snakeSize);
 }
