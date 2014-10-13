@@ -22,7 +22,7 @@ var screenHeight;
 gameInitialize();
 snakeInitialize();
 foodInitialize();
-setInterval(gameLoop, 1000/30);
+setInterval(gameLoop, 2500/30);
 
 /* ============================================================================
  * Game Functions
@@ -31,7 +31,7 @@ setInterval(gameLoop, 1000/30);
 
 function gameInitialize() {
     var canvas = document.getElementById("game-screen");
-    canvas.addEventListener("onkeydown", snakeMovement);
+    document.addEventListener("keydown", snakeMovement);
     context = canvas.getContext("2d");
     
     screenWidth = window.innerWidth;
@@ -61,10 +61,10 @@ function gameDraw() {
 function snakeInitialize() {
     snake = [];
     snakeLength = 5;
-    snakeSize = 35;
+    snakeSize = 30;
     snakeDirection = "down";
     
-    for(var index = snakeLength; index >= 0; index--) {
+    for(var index = snakeLength - 1; index >= 0; index--) {
         snake.push( {
             x: index,
             y: 0
@@ -142,7 +142,8 @@ function foodInitialize() {
 
 function foodDraw() {
     context.fillStyle = "grey";
-    context.fillRect(food.x, food.y, snakeSize, snakeSize);
+    context.fillRect(food[index].x * snakeSize, food[index].y * snakeSize, snakeSize, snakeSize);
+    
 }
 
 function setFoodPosition() {
