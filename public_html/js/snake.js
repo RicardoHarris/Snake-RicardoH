@@ -22,7 +22,7 @@ var screenHeight;
 gameInitialize();
 snakeInitialize();
 foodInitialize();
-setInterval(gameLoop, 2500/30);
+setInterval(gameLoop, 1000/30);
 
 /* ============================================================================
  * Game Functions
@@ -101,6 +101,8 @@ function snakeUpdate() {
         snakeHeadX--;
     }
     
+    checkFoodCollisions(snakeHeadX, snakeHeadY);
+    
     var snakeTail = snake.pop();
     snakeTail.x = snakeHeadX;
     snakeTail.y = snakeHeadY;
@@ -109,19 +111,19 @@ function snakeUpdate() {
 
 
 function snakeMovement(event) {
-    if (event.keyCode == '38'){
+    if (event.keyCode == '38' && snakeDirection != "down"){
         //up
         snakeDirection = "up";
     }
-    else if (event.keyCode == '40'){
+    else if (event.keyCode == '40' && snakeDirection != "up"){
         //down
         snakeDirection = "down";
     }
-    else if (event.keyCode == '39'){
+    else if (event.keyCode == '39' && snakeDirection != "left"){
         //right
         snakeDirection = "right";
     }
-    else if (event.keyCode == '37'){
+    else if (event.keyCode == '37' && snakeDirection != "right"){
         //left
         snakeDirection = "left";
     }
@@ -154,3 +156,17 @@ function setFoodPosition() {
     food.y = Math.floor(randomY / snakeSize);
 }
 
+/* ============================================================================
+ * Collision Handling
+ * ============================================================================
+ */
+
+function checkFoodCollisions(snakeHeadX, snakeHeadY){
+    if(snakeHeadX == food.x && snakeHeadY == food.y) {
+        snake.push({
+            x: 0,
+            y: 0
+        });
+        snakeLength++;
+    }
+}
