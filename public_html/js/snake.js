@@ -22,7 +22,7 @@ var screenHeight;
 gameInitialize();
 snakeInitialize();
 foodInitialize();
-setInterval(gameLoop, 1000/30);
+setInterval(gameLoop, 1000/20);
 
 /* ============================================================================
  * Game Functions
@@ -103,6 +103,7 @@ function snakeUpdate() {
     
     checkFoodCollisions(snakeHeadX, snakeHeadY);
     checkWallCollisions(snakeHeadX, snakeHeadY);
+    checkSnakeCollisions (snakeHeadX, snakeHeadY);
     
     var snakeTail = snake.pop();
     snakeTail.x = snakeHeadX;
@@ -145,7 +146,7 @@ function foodInitialize() {
 
 function foodDraw() {
     context.fillStyle = "red";
-    context.fillRect(food.x * snakeSize, food.y * snakeSize, snakeSize, snakeSize);
+    context.fillCircle(food.x * snakeSize, food.y * snakeSize, snakeSize, snakeSize);
     
 }
 
@@ -175,5 +176,15 @@ function checkFoodCollisions(snakeHeadX, snakeHeadY){
 function checkWallCollisions(snakeHeadX, snakeHeadY){
     if(snakeHeadX * snakeSize >= screenWidth || snakeHeadX * snakeSize < 0){
         console.log("Wall Collision");
+        setState("GAME OVER")
+    }
+}
+
+function checkSnakeCollisions(snakeHeadX, snakeHeadY) {
+    for(var index = 1; index < snake.length; index ++) {
+        if(snakeHeadX == snake[index].x && snakeHeadY == snake[index].y) {
+            setState("GAME OVER");
+            return;
+        }
     }
 }
