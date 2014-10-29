@@ -13,11 +13,21 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-        <section id="gameOver">
-            <h1 class="title">GAME OVER</h1>
-            <h3 id="restartButton">Restart?</h3>
+        
+        <section id="startMenu">
+            <h1 class="title">Slimbo</h1>
+            <h3 id="startButton">Spawn?</h3>
         </section>
         
+        <section id="playHUD">
+            <h2 id="scoreBoard">Points|</h2>
+        </section>
+
+        <section id="gameOver">
+            <h1 class="title">You Have Met Your Demise.</h1>
+            <h3 id="restartButton">Respawn?</h3>
+        </section>
+
         <canvas id="game-screen"></canvas>
 
         <script src="js/snake.js"></script>
