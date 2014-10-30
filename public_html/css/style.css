@@ -7,7 +7,7 @@ body {
    display: block;
 }
 
-#gameOver, #playHUD {
+#gameOver, #playHUD, #startMenu {
     position: absolute;
     visibility: hidden;
 }
@@ -30,5 +30,19 @@ h1, h2, h3 {
 }
 
 #restartButton:hover {
+    background-color: black;
+}
+
+#scoreboard {
+    margin: 0px;
+    position: absolute;
+}
+
+#startButton {
+    border: 2px solid white;
+    border-radius: 7px;
+}
+
+#startButton:hover {
     background-color: black;
 }
