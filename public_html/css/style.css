@@ -3,7 +3,7 @@ body {
     padding: 0;
 }
 
-#game-screen {
+#game-screen, #music {
    display: block;
 }
 
@@ -24,7 +24,7 @@ h1, h2, h3 {
     margin-top: 0px;
 }
 
-#restartButton {
+#restartButton, #music {
     border: 2px solid white;
     border-radius: 7px;
 }
@@ -36,6 +36,7 @@ h1, h2, h3 {
 #scoreboard {
     margin: 0px;
     position: absolute;
+    border: 2px solid white;
 }
 
 #startButton {
@@ -45,4 +46,9 @@ h1, h2, h3 {
 
 #startButton:hover {
     background-color: black;
+}
+
+#music {
+    margin-left: 38%;
+    position: absolute;
 }

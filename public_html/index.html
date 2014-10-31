@@ -10,15 +10,16 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='http://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet' type='text/css'>
+
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-        
+
         <section id="startMenu">
             <h1 class="title">Slimbo</h1>
             <h3 id="startButton">Spawn?</h3>
         </section>
-        
+
         <section id="playHUD">
             <h2 id="scoreBoard"></h2>
         </section>
@@ -28,8 +29,14 @@ and open the template in the editor.
             <h3 id="restartButton">Respawn?</h3>
         </section>
 
+        <audio id="music" controls autoplay>
+            <source src="audio/deadmau5 - Raise Your Weapon.mp3" type="audio/mpeg">
+            Your browser does not support the <code>audio</code> tag.
+        </audio>
+
         <canvas id="game-screen"></canvas>
 
         <script src="js/snake.js"></script>
+
     </body>
 </html>

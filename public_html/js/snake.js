@@ -81,13 +81,6 @@ function gameDraw() {
     context.fillRect(0, 0, screenWidth, screenHeight);
 }
 
-//function gameStart() {
-//    snakeInitialize();
-//    foodInitialize();
-//    hideMenu(gameStartMenu);
-//    setState("START MENU");
-//}
-
 function gameRestart() {
     snakeInitialize();
     foodInitialize();
@@ -200,6 +193,7 @@ function setFoodPosition() {
     food.x = Math.floor(randomX / snakeSize);
     food.y = Math.floor(randomY / snakeSize);
 }
+// Sets the food to a randomly generated place on the screen
 
 /* ============================================================================
  * Collision Handling
