@@ -30,7 +30,7 @@ var scoreboard;
 gameInitialize();
 snakeInitialize();
 foodInitialize();
-setInterval(gameLoop, 1000 / 30);
+setInterval(gameLoop, 1500 / 30);
 
 /* ============================================================================
  * Game Functions
@@ -59,7 +59,7 @@ function gameInitialize() {
 
     restartButton = document.getElementById("restartButton");
     restartButton.addEventListener("click", gameRestart);
-    
+
     playHUD = document.getElementById("playHUD");
     scoreboard = document.getElementById("scoreBoard");
 
@@ -113,6 +113,8 @@ function snakeDraw() {
     for (var index = 0; index < snake.length; index++) {
         context.fillStyle = "black";
         context.fillRect(snake[index].x * snakeSize, snake[index].y * snakeSize, snakeSize, snakeSize);
+        context.strokeStyle = "white";
+        context.strokeRect(snake[index].x * snakeSize, snake[index].y * snakeSize, snakeSize, snakeSize);
     }
 }
 
@@ -256,11 +258,11 @@ function showMenu(state) {
     if (state == "GAME OVER") {
         displayMenu(gameOverMenu);
     }
-    else if(state == "PLAY"){
+    else if (state == "PLAY") {
         displayMenu(playHUD);
     }
-    if (state == "START MENU"){
-        displayMenu(gameStartMenu)
+    if (state == "START MENU") {
+        displayMenu(gameStartMenu);
     }
 }
 
